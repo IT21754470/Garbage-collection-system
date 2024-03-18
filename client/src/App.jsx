@@ -27,7 +27,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route element={<PrivateRoute/>}/>
         <Route path="/profile" element={<Profile />} />
-
+  
         
         {isAdmin ? (
           <>
