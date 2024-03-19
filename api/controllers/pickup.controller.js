@@ -2,15 +2,7 @@ import bcryptjs from 'bcryptjs';
 import Pickup from '../models/pickup.model.js'; // Assuming you have a Pickup model
 
 
-export const test=async(req,res)=>{
-    try {
-      const users = await User.find(); 
-      res.status(200).json(users); 
-  } catch (error) {
-      console.error('Error fetching users:', error);
-      res.status(500).json({ message: 'Internal server error' }); 
-  }
-  };
+
 export const createPickup = async (req, res, next) => {
   const { laneName, date, time } = req.body;
   
