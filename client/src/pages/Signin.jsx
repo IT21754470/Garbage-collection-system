@@ -62,6 +62,14 @@ const SignIn = () => {
           id="password"
           onChange={handleChange}
         />
+
+<input
+          type="password"
+          placeholder="confirm Password"
+          className="border p-3 rounded-lg"
+          id="confirmpassword"
+          onChange={handleChange}
+        />
         <button
           disabled={loading}
           className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"

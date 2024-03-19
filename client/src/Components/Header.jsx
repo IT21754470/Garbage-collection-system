@@ -131,7 +131,7 @@ export default function Header() {
             </div>
           ) : (
             <Link to="/sign-in">
-              <li className="text-slate-700 hover:underline">Sign in</li>
+              <li className="hidden sm:inline text-slate-700 hover:underline bg-gray-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Sign in</li>
             </Link>
           )}
         </ul>

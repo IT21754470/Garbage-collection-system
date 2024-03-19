@@ -5,21 +5,20 @@ import bcryptjs from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
 
-export const signup=async(req,res,next)=>{
+export const signup = async (req, res, next) => {
+  const { username, email, password, address, lane } = req.body;
+  const hashedPassword = bcryptjs.hashSync(password, 10);
+  const newUser = new User({ username, email, address, lane, password: hashedPassword });
 
-    const {username,email,password}=req.body;
-    const hashedPassword =bcryptjs.hashSync(password,10);
-    const newUser=new User({username,email,address,lane,password:hashedPassword});
-
-    try{
-        await newUser.save();
-        res.status(201).json('user created succesfully')
-      } catch (error) {
-        console.error(error);
-        next(errorHandler(550, 'Error from the function'));
-      }
-      
+  try {
+      await newUser.save();
+      res.status(201).json('User created successfully');
+  } catch (error) {
+      console.error(error);
+      next(errorHandler(500, 'Error creating user'));
+  }
 };
+
 
 export const signin=async(req,res,next)=>{
   const{email, password}=req.body;

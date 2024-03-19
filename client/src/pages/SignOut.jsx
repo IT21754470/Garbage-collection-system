@@ -12,9 +12,13 @@ export default function SignOut() {
   const[loading1,setLoading2]=useState(false)
   const navigate = useNavigate();
   const handleChange= (e)=>{
+
+    
     setFormData({
       ...formData,
       [e.target.id]:e.target.value,
+
+      
     })
 
 
@@ -79,10 +83,13 @@ export default function SignOut() {
      onChange={handleChange}
     
     />
-<input type='text' placeholder='address'
-     className='border p-3 rounded-lg' 
-     id='address' 
-     onChange={handleChange}/>
+<input 
+  type='text' 
+  placeholder='address'
+  className='border p-3 rounded-lg' 
+  id='address' 
+  onChange={handleChange}
+/>
 
 <select id="lane"  className='border p-3 rounded-lg' onChange={handleChange}>
         <option value="">Select Lane</option>

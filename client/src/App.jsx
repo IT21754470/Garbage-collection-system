@@ -11,7 +11,8 @@ import AdminDashboard from './pages/Admin/admindashboard';
 import PrivateRoute from './Components/PrivateRoute';
 import Users from './pages/Admin/users';
 import {useSelector} from 'react-redux';
-
+import Footer from './Components/footer';
+import Pickup from './pages/Admin/pickup';
 export default function App() {
   const { currentUser } = useSelector((state) => state.user);
   const isAdmin = currentUser?.isAdmin;
@@ -20,6 +21,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Header />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sign-in" element={<Signin />} />
@@ -28,7 +30,7 @@ export default function App() {
         <Route element={<PrivateRoute/>}/>
         <Route path="/profile" element={<Profile />} />
   
-        
+       <Route path="/pickup" element={<Pickup />} />
         {isAdmin ? (
           <>
             
@@ -42,6 +44,7 @@ export default function App() {
      
       
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }
