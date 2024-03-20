@@ -36,3 +36,37 @@ export const getSchedule = async (req, res) => {
     res.status(500).json({ error: 'Error fetching schedules' });
   }
 };
+export const updateSchedule = async (req, res, next) => {
+ 
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: {
+          lane: req.body.lane,
+          date: req.body.date,
+          time: req.body.time
+        
+        },
+      },
+      { new: true }
+    );
+
+    const { password, ...rest } = updatedUser._doc;
+
+    res.status(200).json(rest);
+ 
+};
+
+//delete user
+
+export const deleteSchedule = async (req, res, next) => {
+  if (req.user.id !== req.params.id)
+    return next(errorHandler(401, 'You can only delete your own account!'));
+  try {
+    await User.findByIdAndDelete(req.params.id);
+   
+    res.status(200).json('User has been deleted!');
+  } catch (error) {
+    next(error);
+  }
+};

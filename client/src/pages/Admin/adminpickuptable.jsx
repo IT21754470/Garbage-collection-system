@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import { Link } from 'react-router-dom';
+
 const adminPickupTable = () => {
   const [pickups, setPickups] = useState([]);
   const [selectedLane, setSelectedLane] = useState('');
@@ -21,6 +23,11 @@ const adminPickupTable = () => {
   const handleLaneChange = (e) => {
     setSelectedLane(e.target.value);
   };
+
+  const handleEditClick = (pickup) => {
+    setSelectedPickup(pickup);
+  };
+
 
   
   const filteredPickups = selectedLane ? pickups.filter(pickup => pickup.lane === selectedLane) : pickups;
@@ -54,8 +61,13 @@ const adminPickupTable = () => {
                   <td className="py-3 px-6">{pickup.lane}</td>
                   <td className="py-3 px-6">{pickup.date}</td>
                   <td className="py-3 px-6">{pickup.time}</td>
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full">update</button>
-
+                  <td>
+            <Link to="/pickup/edit" onClick={() => handleEditClick(pickup)}>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full">
+                Update
+              </button>
+            </Link>
+</td>
                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded-full">delete</button>
                 </tr>
               ))}
