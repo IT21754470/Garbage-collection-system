@@ -13,6 +13,11 @@ import Users from './pages/Admin/users';
 import {useSelector} from 'react-redux';
 import Footer from './Components/footer';
 import Pickup from './pages/Admin/pickup';
+import PickupTable from './pages/pickupTable';
+import SpecialPickup from './pages/specialpickup';
+import Specialpickuptable from './pages/Admin/specialpickuptable';
+import AdminlPickup from './pages/Admin/adminpickuptable';
+
 export default function App() {
   const { currentUser } = useSelector((state) => state.user);
   const isAdmin = currentUser?.isAdmin;
@@ -29,6 +34,9 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route element={<PrivateRoute/>}/>
         <Route path="/profile" element={<Profile />} />
+        <Route path="/pickupTable" element={<PickupTable />} />
+        <Route path="/specialpickup" element={<SpecialPickup />} />
+        
   
        <Route path="/pickup" element={<Pickup />} />
         {isAdmin ? (
@@ -36,6 +44,9 @@ export default function App() {
             
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
             <Route path="/users" element={<Users />} />
+            <Route path="/pickup" element={<Pickup />} />
+             <Route path="/specialpickupTable" element={<Specialpickuptable/>} />
+             <Route path="/adminpickup" element={<AdminlPickup />} />
           </>
         ) : (
           <Route path="/admin-dashboard" element={<Navigate to="/" />} />

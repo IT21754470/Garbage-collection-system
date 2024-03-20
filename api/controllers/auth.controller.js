@@ -77,7 +77,7 @@ export const google=async(req,res,next)=>{
         password: hashedPassword,
         avatar: req.body.photo,
         address: req.body.address ,
-        lane: req.body.lane // This line sets the avatar explicitly
+        lane: req.body.lane 
     });
       
       await newUser.save();

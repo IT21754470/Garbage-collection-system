@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import Single from "../assets/shed.jpg"
 import Single2 from "../assets/garbage.jpeg"
 import Single3 from "../assets/community.jpeg"
-
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   const {currentUser,loading,error}=useSelector((state)=> state.user)
@@ -22,7 +22,7 @@ export default function Home() {
                   <h2 className='text-2xl font-bold text-center py-8'>Pickup Schedule</h2>
               
              
-                  <button className='bg-[#00df9a] text-black rounded-md font-medium w-[200px]  my-6 mx-auto px-6 py-3 '>Join</button>
+                  <button className='bg-[#00df9a] text-black rounded-md font-medium w-[200px]  my-6 mx-auto px-6 py-3 '> <Link to="/pickupTable">Join</Link></button>
               </div>
               <div className='bg-gray-100 w-full shadow-2xl flex flex-col p-4 md:my-0 my-8 rounded-lg hover:scale-105 duration-300'>
               

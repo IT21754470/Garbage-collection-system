@@ -10,7 +10,8 @@ import {
 
 const Footer = () => {
   return (
-    <div className='max-w-[1500px] mx-auto  px-6 grid lg:grid-cols-1 gap-8 bg-slate-200 '>
+    <footer className=' bottom-0 left-0 w-full   p-4'>
+    <div className='max-w-[1600px] mx-auto  px-6 grid lg:grid-cols-1 gap-8 bg-slate-200 '>
         <div>
             <h1 className='w-full text-3xl font-bold text-[#00df9a] '>Eco Pick</h1>
 
@@ -36,6 +37,7 @@ const Footer = () => {
         </div>
     
     </div>
+    </footer>
   )
 }
 
