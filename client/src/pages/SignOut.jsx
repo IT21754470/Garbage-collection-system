@@ -83,6 +83,13 @@ export default function SignOut() {
      onChange={handleChange}
     
     />
+    <input
+          type="password"
+          placeholder="confirm Password"
+          className="border p-3 rounded-lg"
+          id="confirmpassword"
+          onChange={handleChange}
+        />
 <input 
   type='text' 
   placeholder='address'

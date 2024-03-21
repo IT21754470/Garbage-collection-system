@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post('/create', createPickup);
 router.get('/get', getSchedule);
-router.post('/updates/:id',  updateSchedule)
-router.delete('/deletes/:id', deleteSchedule)
+router.put('/updates/:id',  updateSchedule)
+router.delete('/deletes/:id',deleteSchedule);
+
 export default router;

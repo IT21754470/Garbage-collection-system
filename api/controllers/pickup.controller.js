@@ -37,36 +37,36 @@ export const getSchedule = async (req, res) => {
   }
 };
 export const updateSchedule = async (req, res, next) => {
- 
-    const updatedUser = await User.findByIdAndUpdate(
+  try {
+    const { lane, date, time } = req.body;
+    const updatedPickup = await Pickup.findByIdAndUpdate(
       req.params.id,
-      {
-        $set: {
-          lane: req.body.lane,
-          date: req.body.date,
-          time: req.body.time
-        
-        },
-      },
+      { lane, date, time },
       { new: true }
     );
 
-    const { password, ...rest } = updatedUser._doc;
-
-    res.status(200).json(rest);
- 
+    res.status(200).json(updatedPickup);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error updating pickup' });
+  }
 };
+
 
 //delete user
 
 export const deleteSchedule = async (req, res, next) => {
-  if (req.user.id !== req.params.id)
-    return next(errorHandler(401, 'You can only delete your own account!'));
   try {
-    await User.findByIdAndDelete(req.params.id);
-   
-    res.status(200).json('User has been deleted!');
+    const pickup = await Pickup.findById(req.params.id);
+    if (!pickup) {
+      return res.status(404).json({ error: 'Pickup not found' });
+    }
+
+    await pickup.deleteOne(); // Use deleteOne() instead of remove()
+
+    res.status(200).json({ message: 'Pickup has been deleted' });
   } catch (error) {
-    next(error);
+    console.error(error);
+    res.status(500).json({ error: 'Error deleting pickup' });
   }
 };

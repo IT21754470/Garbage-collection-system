@@ -18,9 +18,9 @@ export default function Home() {
   
               <div className='w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300 '>
               <img className='w-40 mx-auto mt-[-3rem] bg-white'src={Single} alt=""/>
-  
+<Link to="/pickupTable">
                   <h2 className='text-2xl font-bold text-center py-8'>Pickup Schedule</h2>
-              
+          </Link>
              
                   <button className='bg-[#00df9a] text-black rounded-md font-medium w-[200px]  my-6 mx-auto px-6 py-3 '> <Link to="/pickupTable">Join</Link></button>
               </div>
