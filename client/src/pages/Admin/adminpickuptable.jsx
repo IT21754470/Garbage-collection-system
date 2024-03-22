@@ -85,11 +85,13 @@ const AdminPickupTable = () => {
                     </button>
                   </td>
                 </tr>
+                
               ))}
-              {selectedPickup && <PickupForm pickup={selectedPickup} />}
-            </tbody>
+                </tbody>
           </table>
         </div>
+              {selectedPickup && <PickupForm pickup={selectedPickup} />}
+           
       </div>
     </div>
   );

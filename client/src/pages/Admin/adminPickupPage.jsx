@@ -18,17 +18,17 @@ const PickupForm = ({ pickup }) => {
       });
     }
   }, [pickup]);
-  // Trigger effect when pickup data changes
+
 
   const handleChange = (e) => {
     const { id, value } = e.target;
     let formattedValue = value;
   
-    // Check if the input is a date field
+    
     if (id === "date") {
-      // Extract the date part from the datetime value
+     
       const datePart = value.split('T')[0];
-      // Check if the datePart is valid
+     
       if (datePart) {
         formattedValue = datePart;
       } else {
@@ -50,7 +50,6 @@ const PickupForm = ({ pickup }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    // Check if pickup object is defined
     if (!pickup) {
       console.error("Pickup object is undefined");
       return;

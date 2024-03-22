@@ -69,15 +69,15 @@ export default function Profile() {
       }
     );
   };
-  //console log current user
+
   console.log(currentUser);
 
-  //handle change
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  //handle submit
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -103,7 +103,7 @@ export default function Profile() {
     }
   };
 
-//handle delete user
+
 const handleDeleteUser = async () => {
   try {
     dispatch(deleteUserStart());
@@ -117,14 +117,14 @@ const handleDeleteUser = async () => {
     }
     dispatch(deleteUserSuccess(data));
 
-    // Redirect to sign-in page after successful deletion
+  
     window.location.href = '/signin';
   } catch (error) {
     dispatch(deleteUserFailure(error.message));
   }
 };
 
-//sign out user
+
 const handleSignOut = async () => {
   try {
     dispatch(signOutUserStart());

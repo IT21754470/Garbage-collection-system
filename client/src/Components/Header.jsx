@@ -53,10 +53,12 @@ export default function Header() {
   return (
     <header className="bg-slate-200 shadow-xl p-4">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-3.5 absolute-top-3">
+    
+        
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
-            <span className="text-green-500 text-3xl">ECO</span>
-            <span className="text-green-700 text-3xl">PICK</span>
+            <span className="text-green-500 text-4xl">Eco</span>
+            <span className="text-green-700 text-4xl">Pick</span>
           </h1>
         </Link>
   
@@ -96,10 +98,12 @@ export default function Header() {
           </Link>
 </div>
           {currentUser && isAdmin && (
+            
             <Link to="/admin-dashboard">
               <li className="text-slate-700 hover:underline">
                 Admin Dashboard
               </li>
+             
             </Link>
           )}
   

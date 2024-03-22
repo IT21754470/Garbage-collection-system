@@ -1,7 +1,7 @@
 import bcryptjs from 'bcryptjs';
-import Pickup from '../models/pickup.model.js'; // Assuming you have a Pickup model
+import Pickup from '../models/pickup.model.js'; 
 
-// Assuming you have a Pickup model
+
 
 export const createPickup = async (req, res, next) => {
   const { lane, date, time } = req.body;
@@ -62,7 +62,7 @@ export const deleteSchedule = async (req, res, next) => {
       return res.status(404).json({ error: 'Pickup not found' });
     }
 
-    await pickup.deleteOne(); // Use deleteOne() instead of remove()
+    await pickup.deleteOne(); 
 
     res.status(200).json({ message: 'Pickup has been deleted' });
   } catch (error) {

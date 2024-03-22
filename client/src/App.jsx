@@ -18,7 +18,10 @@ import SpecialPickup from './pages/specialpickup';
 import Specialpickuptable from './pages/Admin/specialpickuptable';
 import AdminlPickup from './pages/Admin/adminpickuptable';
 import PickupForm from './pages/Admin/adminPickupPage';
-
+import AddEmployee from './pages/Admin/addEmployee';
+import AddEmployeeDashboard from './pages/Admin/addEmployeedashboard';
+import EmployeePage from './pages/admin/employeePage';
+import Contact from './pages/contact';
 
 export default function App() {
   const { currentUser } = useSelector((state) => state.user);
@@ -38,7 +41,7 @@ export default function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/pickupTable" element={<PickupTable />} />
         <Route path="/specialpickup" element={<SpecialPickup />} />
-        
+        <Route path="/contact" element={<Contact/>}/>
   
        <Route path="/pickup" element={<Pickup />} />
         {isAdmin ? (
@@ -49,7 +52,10 @@ export default function App() {
             <Route path="/pickup" element={<Pickup />} />
              <Route path="/specialpickupTable" element={<Specialpickuptable/>} />
              <Route path="/adminpickup" element={<AdminlPickup />} />
-<Route path="/adminpickupform" element={<PickupForm />} />
+             <Route path="/addemployee" element={<AddEmployee/>}/>
+             <Route path="/addemployeedashboard" element={<AddEmployeeDashboard/>}/>
+           <Route path="/adminpickupform" element={<PickupForm />} />
+           <Route path="/employeepage" element={<EmployeePage/>}/>
           </>
         ) : (
           <Route path="/admin-dashboard" element={<Navigate to="/" />} />

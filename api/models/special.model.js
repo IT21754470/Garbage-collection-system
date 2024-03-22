@@ -9,10 +9,18 @@ const specialpickupSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  
+  accepted: {
+    type: Boolean,
+    default: false
+  },
+  rejected: {
+    type: Boolean,
+    default: false
+  }
 }, { timestamps: true });
 
-const specialPickup = mongoose.model('specialPickup', specialpickupSchema);
+const SpecialPickup = mongoose.model('SpecialPickup', specialpickupSchema);
 
-export default specialPickup;
+export default SpecialPickup;
+
 

@@ -16,7 +16,7 @@ export default function Home() {
   
           <div className='max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8'>
   
-              <div className='w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300 '>
+              <div className='w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300 bg-gray-300  '>
               <img className='w-40 mx-auto mt-[-3rem] bg-white'src={Single} alt=""/>
 <Link to="/pickupTable">
                   <h2 className='text-2xl font-bold text-center py-8'>Pickup Schedule</h2>
@@ -29,7 +29,7 @@ export default function Home() {
               <img className='w-40 mx-auto mt-[-3rem] bg-white'src={Single2} alt=""/>
                   <h2 className='text-2xl font-bold text-center py-8'>Special Requests</h2>
                  
-                  <button className='bg-black text-[#00df9a] rounded-md font-medium w-[200px]  my-6 mx-auto px-6 py-3 '>Join</button>
+                  <button className='bg-black text-[#00df9a] rounded-md font-medium w-[200px]  my-6 mx-auto px-6 py-3 '><Link to="/specialpickup">Join</Link></button>
               </div>
   
               <div className='w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300 bg-gray-300'>

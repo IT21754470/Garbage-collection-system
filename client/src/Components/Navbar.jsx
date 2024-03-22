@@ -28,10 +28,10 @@ const Navbar= ()=> {
  <li className="p-4 border-b border-gray-600">Dashboard</li>
  <li className='p-4 border-b border-gray-600'>  <Link to="/users">All Users</Link></li>
 
- <li className='p-4 border-b border-gray-600'>Employee Management</li>
+ <li className='p-4 border-b border-gray-600'> <Link to="/addEmployee">Employee Management</Link></li>
  <li className='p-4 border-b border-gray-600'>Contact</li>
  <li className='p-4 border-b border-gray-600'><Link to="/pickup">Create Schedule</Link></li>
- </ul>
+ </ul> <li className='p-4 border-b border-gray-600'><Link to="/specialpickupTable">special pickups</Link></li>
  
     </div>
     <ul>

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 const PickupForm = () => {
   const [formData, setFormData] = useState({
     lane: '',
     date: '',
-    time: ''
+    time: '',
+    
   });
 
   const handleChange = (e) => {
@@ -62,7 +63,10 @@ const PickupForm = () => {
             <label htmlFor="time" className="text-lg mb-2">Time</label>
             <input type="time" id="time" value={formData.time} onChange={handleChange} className="p-2 border border-gray-300 rounded-md" />
           </div>
+          <div className='space-x-[5px]'>
           <button type="submit" className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">Add Schedule</button>
+          <button type="submit" className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"><Link to="/adminpickup">view schedule</Link></button>
+        </div>
         </form>
       </div>
     </div>

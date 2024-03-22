@@ -4,6 +4,7 @@ import userRouter from './routes/user.routes.js'
 import authRouter from './routes/auth.routes.js'
 import pickupRouter from './routes/pickup.routes.js'
 import specialpickupRouter from './routes/special.routes.js'
+import employeeRouter from './routes/employee.routes.js'
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 dotenv.config();
@@ -26,6 +27,8 @@ app.use("/api/user",userRouter)
 app.use("/api/auth",authRouter)
 app.use("/api/pickup", pickupRouter);
 app.use('/api/specialpickup', specialpickupRouter);
+app.use('/api/employee', employeeRouter);
+
 app.use((err,req,res,next)=>{
 
     const statusCode=err.statusCode|| 500;

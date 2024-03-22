@@ -1,9 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
+import {useDispatch} from 'react-redux';
+import {
+   
+    deleteUserFailure,
+    deleteUserStart,
+    deleteUserSuccess,
+   
+  } from '../../redux/user/userSlice';
+
 
 const Users = () => {
     const [users, setUsers] = useState([]);
+    const dispatch = useDispatch();
+
 
     const handleMakeAdmin = (currentUser) => {
         console.log('Making admin:', currentUser._id);
@@ -16,15 +27,23 @@ const Users = () => {
             console.error('Error making admin:', error);
         });
     };
-    const handleDeleteUser = (user) => {
-        console.log('Deleting user:', user._id);
-        axios.delete(`/api/user/delete/${user._id}`).then((res) => {
-            alert(`${user.username} has been removed from the database`);
-            fetchUsers();
-        }).catch(error => {
-            console.error('Error deleting user:', error);
-        });
-    };
+
+
+   const handleDeleteUser = async (userId) => {
+    try {
+        dispatch(deleteUserStart());
+        const res = await axios.delete(`/api/user/delete/${userId}`); // Make DELETE request
+        const data = await res.data;
+        dispatch(deleteUserSuccess(data));
+        alert('User has been deleted successfully');
+        fetchUsers();
+    } catch (error) {
+        dispatch(deleteUserFailure(error.message));
+        console.error('Error deleting user:', error);
+    }
+};
+
+    
     
 
     useEffect(() => {
@@ -77,12 +96,13 @@ const Users = () => {
                                         )}
                                     </td>
                                     <td className="py-3 px-6">
-                                        <button
-                                            onClick={() => handleDeleteUser(user)}
-                                            className="bg-orange-500 text-white py-1 px-2 rounded-full"
-                                        >
-                                            <FaTrashAlt />
-                                        </button>
+                                    <button
+    onClick={() => handleDeleteUser(user._id)} 
+    className="bg-orange-500 text-white py-1 px-2 rounded-full"
+>
+    <FaTrashAlt />
+</button>
+
                                     </td>
                                 </tr>
                             ))}
