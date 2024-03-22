@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
 import {useSelector} from 'react-redux';
 import {useRef,useState, useEffect} from 'react';
@@ -69,15 +68,15 @@ export default function Profile() {
       }
     );
   };
-
+  //console log current user
   console.log(currentUser);
 
-
+  //handle change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-
+  //handle submit
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -117,14 +116,14 @@ const handleDeleteUser = async () => {
     }
     dispatch(deleteUserSuccess(data));
 
-  
+    
     window.location.href = '/signin';
   } catch (error) {
     dispatch(deleteUserFailure(error.message));
   }
 };
 
-
+//sign out user
 const handleSignOut = async () => {
   try {
     dispatch(signOutUserStart());
@@ -199,18 +198,22 @@ const handleSignOut = async () => {
 <input
           type='password'
           placeholder='password'
-          onChange={handleChange}
+        
           id='password'
           className='border p-3 rounded-lg'
+          defaultValue={currentUser.password}
+          onChange={handleChange}
         />
-      <input
+<input
           type='text'
           placeholder='address'
           onChange={handleChange}
-          id='text'
+          id='address'
           className='border p-3 rounded-lg'
+          defaultValue={currentUser.address}
         />
-      
+
+
 
 <button
           disabled={loading}

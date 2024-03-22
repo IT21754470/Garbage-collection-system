@@ -47,7 +47,7 @@ const SpecialPickupTable = () => {
         <h1 className="text-4xl font-bold text-center">Special Pickup Requests</h1>
         <div className="overflow-x-auto">
           <table className="border border-gray-300 w-full rounded-md">
-            <thead className="bg-yellow-300 text-slate-700">
+            <thead className="bg-green-300 text-slate-700">
               <tr>
                 <th className="py-3 px-6 text-left">Garbage Type</th>
                 <th className="py-3 px-6 text-left">Estimated Size</th>

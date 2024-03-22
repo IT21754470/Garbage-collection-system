@@ -42,7 +42,7 @@ export default function App() {
         <Route path="/pickupTable" element={<PickupTable />} />
         <Route path="/specialpickup" element={<SpecialPickup />} />
         <Route path="/contact" element={<Contact/>}/>
-  
+  <Route path='/about' element={<About/>}/>
        <Route path="/pickup" element={<Pickup />} />
         {isAdmin ? (
           <>

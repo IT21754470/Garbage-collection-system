@@ -18,7 +18,7 @@ export default function SignOut() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if passwords match
+
     if (formData.password !== formData.confirmpassword) {
       setError('Passwords do not match');
       return;

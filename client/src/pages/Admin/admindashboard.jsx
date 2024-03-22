@@ -15,7 +15,7 @@ const AdminDashboard = () => {
             <Navbar />
             <h1 className='text-4xl font-bold text-center absolute-top-15 h-16 '>Welcome to admin dashboard</h1>
             <img className='
-       h-150 w-200 object-cover item-center'src={Single3} alt=""/>
+       h-[340px] w-[2040px]  item-center'src={Single3} alt=""/>
          
           
         </div>

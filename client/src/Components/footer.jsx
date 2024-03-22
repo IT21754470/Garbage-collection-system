@@ -2,7 +2,7 @@ import React from 'react'
 import {
     FaDribbbleSquare,
     FaFacebookSquare,
-    FaGithubSquare,
+ 
     FaInstagram,
     FaTwitterSquare
 
@@ -20,7 +20,7 @@ const Footer = () => {
             <div className='flex justify-between md:w-[70%] my-6'>
             <FaDribbbleSquare size={35}/>
             <FaFacebookSquare size={35}/>
-            <FaGithubSquare size={35}/>
+          
             <FaInstagram size={35}/>
             <FaTwitterSquare size={35}/>
 
