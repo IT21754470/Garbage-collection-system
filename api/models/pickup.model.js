@@ -12,6 +12,10 @@ const pickupSchema = new mongoose.Schema({
   time: {
     type: String,
     required: true
+  },
+  assignedEmployee: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Employee'
   }
 }, { timestamps: true });
 

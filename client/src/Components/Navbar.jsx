@@ -31,8 +31,8 @@ const Navbar= ()=> {
  <li className='p-4 border-b border-gray-600'> <Link to="/addEmployee">Employee Management</Link></li>
  <li className='p-4 border-b border-gray-600'>Contact</li>
  <li className='p-4 border-b border-gray-600'><Link to="/pickup">Create Schedule</Link></li>
- </ul> <li className='p-4 border-b border-gray-600'><Link to="/specialpickupTable">special pickups</Link></li>
- 
+<li className='p-4 border-b border-gray-600'><Link to="/specialpickupTable">special pickups</Link></li>
+ </ul>
     </div>
     <ul>
  

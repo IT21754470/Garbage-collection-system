@@ -4,18 +4,19 @@ import Pickup from '../models/pickup.model.js';
 
 
 export const createPickup = async (req, res, next) => {
-  const { lane, date, time } = req.body;
+  const { lane, date, time,selectedEmployee } = req.body;
   
   try {
   
-    if (!lane || !date || !time) {
+    if (!lane || !date || !time|| !selectedEmployee) {
       return res.status(400).json({ error: 'Lane, date, and time are required' });
     }
 
     const newPickup = new Pickup({
       lane,
       date,
-      time
+      time,
+      assignedEmployee: selectedEmployee
     });
 
     await newPickup.save();

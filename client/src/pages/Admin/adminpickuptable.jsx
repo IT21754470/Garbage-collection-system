@@ -6,18 +6,32 @@ import { Link } from 'react-router-dom';
 const AdminPickupTable = () => {
   const [pickups, setPickups] = useState([]);
   const [selectedLane, setSelectedLane] = useState('');
-  const [selectedPickup, setSelectedPickup] = useState(null); // Add selectedPickup state
+  const [selectedPickup, setSelectedPickup] = useState(null);
+  const [selectedEmployee, setSelectedEmployee] = useState(''); 
+  const [employees, setEmployees] = useState([]); 
+
   useEffect(() => {
     fetchPickups();
+    fetchEmployees(); 
   }, []);
 
   const fetchPickups = async () => {
     try {
       const response = await axios.get('/api/pickup/get');
-      console.log('Fetched pickups:', response.data); // Add this line
+      console.log('Fetched pickups:', response.data);
       setPickups(response.data);
     } catch (error) {
       console.error('Error fetching pickups:', error);
+    }
+  };
+
+  const fetchEmployees = async () => {
+    try {
+      const response = await axios.get('/api/employee/get');
+      console.log('Fetched employees:', response.data);
+      setEmployees(response.data);
+    } catch (error) {
+      console.error('Error fetching employees:', error);
     }
   };
 
@@ -32,7 +46,6 @@ const AdminPickupTable = () => {
   const handleDeleteClick = async (id) => {
     try {
       await axios.delete(`/api/pickup/deletes/${id}`);
-  
       setPickups(pickups.filter(pickup => pickup._id !== id));
       setSelectedPickup(null);
       console.log('Pickup deleted:', id);
@@ -40,9 +53,11 @@ const AdminPickupTable = () => {
       console.error('Error deleting pickup:', error);
     }
   };
-  
+  const getEmployeeNameById = (employeeId) => {
+    const employee = employees.find(emp => emp._id === employeeId);
+    return employee ? employee.name : 'Unknown';
+  };
 
-  
   const filteredPickups = selectedLane ? pickups.filter(pickup => pickup.lane === selectedLane) : pickups;
 
   return (
@@ -65,7 +80,7 @@ const AdminPickupTable = () => {
                 <th className="py-3 px-6 text-left">Lane</th>
                 <th className="py-3 px-6 text-left">Date</th>
                 <th className="py-3 px-6 text-left">Time</th>
-                <th className="py-3 px-6 text-left">Status</th>
+                <th className="py-3 px-6 text-left">Employee</th>
                 <th className="py-3 px-6 text-left">Actions</th> {/* Added Actions column */}
               </tr>
             </thead>
@@ -75,7 +90,8 @@ const AdminPickupTable = () => {
                   <td className="py-3 px-6">{pickup.lane}</td>
                   <td className="py-3 px-6">{pickup.date}</td>
                   <td className="py-3 px-6">{pickup.time}</td>
-                  <td className="py-3 px-6">{pickup.status}</td> {/* Assuming status is available */}
+                  <td className="py-3 px-6">{getEmployeeNameById(pickup.assignedEmployee)}</td>
+                  <td className="py-3 px-6">{pickup.status}</td>
                   <td>
                     <button onClick={() => handleEditClick(pickup)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full">
                       Update
@@ -85,13 +101,11 @@ const AdminPickupTable = () => {
                     </button>
                   </td>
                 </tr>
-                
               ))}
-                </tbody>
+            </tbody>
           </table>
         </div>
-              {selectedPickup && <PickupForm pickup={selectedPickup} />}
-           
+        {selectedPickup && <PickupForm pickup={selectedPickup} employees={employees} />} {/* Pass employees as props */}
       </div>
     </div>
   );
