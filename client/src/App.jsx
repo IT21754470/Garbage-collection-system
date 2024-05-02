@@ -22,7 +22,7 @@ import AddEmployee from './pages/Admin/addEmployee';
 import AddEmployeeDashboard from './pages/Admin/addEmployeedashboard';
 import EmployeePage from './pages/admin/employeePage';
 import Contact from './pages/contact';
-
+import NotificationBell from './Components/NotificationBell';
 export default function App() {
   const { currentUser } = useSelector((state) => state.user);
   const isAdmin = currentUser?.isAdmin;
@@ -33,6 +33,7 @@ export default function App() {
       <Header />
       
       <Routes>
+        <Route path="/bell" element={<NotificationBell />} />
         <Route path="/" element={<Home />} />
         <Route path="/sign-in" element={<Signin />} />
         <Route path="/sign-up" element={<SignOut />} />

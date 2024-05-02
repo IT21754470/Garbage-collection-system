@@ -7,6 +7,7 @@ import specialpickupRouter from './routes/special.routes.js'
 import employeeRouter from './routes/employee.routes.js'
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+// Notification-related routes
 dotenv.config();
 
 mongoose.connect(process.env.MONGO).then(()=>{
@@ -28,6 +29,7 @@ app.use("/api/auth",authRouter)
 app.use("/api/pickup", pickupRouter);
 app.use('/api/specialpickup', specialpickupRouter);
 app.use('/api/employee', employeeRouter);
+
 
 app.use((err,req,res,next)=>{
 

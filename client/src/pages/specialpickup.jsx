@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { FaArrowLeft, FaUser, FaHome } from 'react-icons/fa';
 import Bin from '../assets/bin.png';
 
 export default function Table() {
+  const currentUser = useSelector((state) => state.user.currentUser);
   const [formData, setFormData] = useState({
     garbagetype: '',
-    estimatedsize: ''
+    estimatedsize: '',
+    userId: currentUser?._id || '',
   });
 
   const handleChange = (e) => {

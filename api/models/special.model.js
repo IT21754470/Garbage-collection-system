@@ -1,6 +1,11 @@
 import mongoose from 'mongoose';
 
 const specialpickupSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', // Assuming you have a User model
+    required: true
+  },
   garbagetype: {
     type: String,
     required: true
@@ -22,5 +27,3 @@ const specialpickupSchema = new mongoose.Schema({
 const SpecialPickup = mongoose.model('SpecialPickup', specialpickupSchema);
 
 export default SpecialPickup;
-
-

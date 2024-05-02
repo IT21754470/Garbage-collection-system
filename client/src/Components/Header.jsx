@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 import React, { useState, useRef, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { deleteUserFailure, deleteUserSuccess, signOutUserStart } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 import { FaBell } from 'react-icons/fa';
+import NotificationBell from './NotificationBell';
 
 
 export default function Header() {
@@ -109,7 +110,8 @@ export default function Header() {
   
           {currentUser ? (
             <div className="relative flex items-center gap-4">
-              <FaBell className="text-2xl mr-4 text-gray-800 cursor-pointer" /> 
+
+              <NotificationBell/>
               <img
                 onClick={() => setIsMenuOpen(!isMenuOpen)} 
                 className="rounded-full h-7 w-7 object-cover cursor-pointer"
