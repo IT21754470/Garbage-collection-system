@@ -48,55 +48,50 @@ export const specialgetPickup = async (req, res) => {
 
 
 export const acceptSpecialPickup = async (req, res) => {
-  const { id } = req.params; // Pickup ID to accept
+  const { id } = req.params; 
 
   try {
-    // Ensure that the provided ID is a valid MongoDB ObjectID
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ error: 'Invalid pickup ID' });
     }
 
     const pickup = await specialPickup.findById(id);
 
-    // If no pickup is found with the given ID
     if (!pickup) {
       return res.status(404).json({ error: 'Special pickup not found' });
     }
 
-    // Ensure that the pickup has a userId associated with it
     if (!pickup.userId) {
-      console.error('Special pickup is missing userId'); // Log the issue
+      console.error('Special pickup is missing userId'); 
       return res.status(400).json({ error: 'User ID is required to accept special pickup' });
     }
 
-    // Mark the pickup as accepted
     pickup.accepted = true;
-
-    // Save the updated pickup information to the database
+    pickup.rejected = false;
     await pickup.save();
 
-    // Create a notification for the user indicating that their pickup request has been accepted
     const notification = new Notification({
       userId: pickup.userId,
-      message: 'Your special pickup request has been accepted!',
+      message: `Your special pickup request for ${pickup.garbagetype} (Size: ${pickup.estimatedsize}) has been accepted.`,
     });
 
-    // Save the notification to the database
     await notification.save();
 
-    // Respond with the updated pickup details
     res.status(200).json({ message: 'Pickup accepted', pickup });
   } catch (error) {
-    console.error('Error accepting special pickup:', error); // Log the error for debugging
-    res.status(500).json({ error: 'Internal server error' }); // Respond with a generic error message
+    console.error('Error accepting special pickup:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 };
-
 
 export const rejectSpecialPickup = async (req, res) => {
   const { id } = req.params;
 
   try {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: 'Invalid pickup ID' });
+    }
+
     const pickup = await specialPickup.findById(id);
 
     if (!pickup) {
@@ -112,10 +107,18 @@ export const rejectSpecialPickup = async (req, res) => {
     pickup.accepted = false;
     await pickup.save();
 
-    res.status(200).json(pickup);
+    const notification = new Notification({
+      userId: pickup.userId,
+      message: `Your special pickup request for ${pickup.garbagetype} (Size: ${pickup.estimatedsize}) has been rejected.`,
+    });
+
+    await notification.save();
+
+    res.status(200).json({ message: 'Pickup rejected', pickup });
   } catch (error) {
     console.error('Error rejecting special pickup:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 

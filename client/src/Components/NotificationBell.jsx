@@ -45,7 +45,7 @@ const NotificationBell = () => {
           ) : (
             notifications.map((notification, index) => (
               <div key={index} className="p-4 border-b hover:bg-gray-100">
-                {notification.message}
+                {notification.message} {/* Display the notification message */}
               </div>
             ))
           )}

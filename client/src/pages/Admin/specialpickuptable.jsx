@@ -20,6 +20,7 @@ const SpecialPickupTable = () => {
   const handleAccept = async (id, index) => {
     try {
       await axios.post(`/api/specialpickup/accept/${id}`);
+      // Update the status to accepted
       const updatedSpecialPickups = [...specialPickups];
       updatedSpecialPickups[index].accepted = true;
       updatedSpecialPickups[index].rejected = false;
@@ -32,6 +33,7 @@ const SpecialPickupTable = () => {
   const handleReject = async (id, index) => {
     try {
       await axios.post(`/api/specialpickup/reject/${id}`);
+      // Update the status to rejected
       const updatedSpecialPickups = [...specialPickups];
       updatedSpecialPickups[index].accepted = false;
       updatedSpecialPickups[index].rejected = true;
@@ -43,7 +45,7 @@ const SpecialPickupTable = () => {
 
   return (
     <div className="w-full md:w-[900px] px-4 mx-auto">
-      <div className="bg-swhite-950 rounded-2xl mt-4 px-6 py-6">
+      <div className="bg-white rounded-2xl mt-4 px-6 py-6">
         <h1 className="text-4xl font-bold text-center">Special Pickup Requests</h1>
         <div className="overflow-x-auto">
           <table className="border border-gray-300 w-full rounded-md">
@@ -59,20 +61,29 @@ const SpecialPickupTable = () => {
                 <tr key={index} className={index % 2 === 0 ? 'bg-white' : ''}>
                   <td className="py-3 px-6">{pickup.garbagetype}</td>
                   <td className="py-3 px-6">{pickup.estimatedsize}</td>
-                  <td>
+                  <td className="py-3 px-6">
+                    {pickup.accepted ? (
+                      <span className="text-green-600">Accepted</span>
+                    ) : pickup.rejected ? (
+                      <span className="text-red-600">Rejected</span>
+                    ) : (
+                      <span className="text-gray-600">Pending</span>
+                    )}
+                  </td>
+                  <td className="py-3 px-6 flex gap-2">
                     <button
-                      className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full ${pickup.accepted ? 'bg-green-500' : ''}`}
+                      className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full ${pickup.accepted || pickup.rejected ? 'opacity-50 cursor-not-allowed' : ''}`}
                       onClick={() => handleAccept(pickup._id, index)}
                       disabled={pickup.accepted || pickup.rejected}
                     >
-                      {pickup.accepted ? 'Accepted' : 'Accept'}
+                      Accept
                     </button>
                     <button
-                      className={`bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full ${pickup.rejected ? 'bg-green-500' : ''}`}
+                      className={`bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full ${pickup.accepted || pickup.rejected ? 'opacity-50 cursor-not-allowed' : ''}`}
                       onClick={() => handleReject(pickup._id, index)}
-                      disabled={pickup.rejected || pickup.accepted}
+                      disabled={pickup.accepted || pickup.rejected}
                     >
-                      {pickup.rejected ? 'Rejected' : 'Reject'}
+                      Reject
                     </button>
                   </td>
                 </tr>
