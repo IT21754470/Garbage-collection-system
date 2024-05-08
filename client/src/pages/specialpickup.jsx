@@ -8,6 +8,8 @@ export default function Table() {
   const [formData, setFormData] = useState({
     garbagetype: '',
     estimatedsize: '',
+    date:'',
+    location:'',
     userId: currentUser?._id || '',
   });
 
@@ -46,7 +48,7 @@ export default function Table() {
     <div className="flex items-center justify-center mt-10">
       <div>
         <div><FaArrowLeft /></div>
-        <div className="h-[400px] w-[1000px] bg-gradient-to-r from-green-400 to-green-400 via-white">
+        <div className="h-[500px] w-[1500px] bg-gradient-to-r from-green-400 to-green-400 via-white">
           <div className="flex items-center justify-center mt-4"></div>
           <h1 className="text-2xl font-serif ml-8 mt-4">Select the garbage type</h1>
           <div className="flex justify-center items-center">
@@ -76,11 +78,48 @@ export default function Table() {
                 <div><button className={`bg-green-200 w-20 h-8 mt-3 rounded-xl ml-2 ${formData.estimatedsize === 'Medium' ? 'bg-green-500' :'hover:bg-green-300'}`} onClick={() => handleChange({ target: { id: 'estimatedsize', value: 'Medium' } })}>Medium</button></div>
                 <div><button className={`bg-green-200 w-20 h-8 mt-3 rounded-xl ml-2 ${formData.estimatedsize === 'Small' ? 'bg-green-500' :'hover:bg-green-300'}`} onClick={() => handleChange({ target: { id: 'estimatedsize', value: 'Small' } })}>Small</button></div>
               </div>
+
+              <div className="mb-4 col-span-1">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="date"
+            >
+              Final Date
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="date"
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+              required
+            />  
+          </div>
+          <div className="mb-4 col-span-1">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="location"
+            >
+              Location
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="location"
+              id="location"
+              value={formData.location}
+              onChange={handleChange}
+              required
+              placeholder="Enter location"
+            />
+          </div>
               <div></div>
             </div>
           </div>
-          <button onClick={handleSubmit} className="bg-slate-700 text-white w-32 h-15 mt-8 rounded-xl ml-[800px] uppercase hover:opacity-95 disabled:opacity-80">Submit Approval</button>
+        
         </div>
+        <button onClick={handleSubmit} className="bg-slate-700 text-white w-32 h-15 mt-8 rounded-xl ml-[800px] uppercase hover:opacity-95 disabled:opacity-80">Submit Approval</button>
         <div className="flex gap-4 mt-4 text-2xl">
           <FaUser />
           <FaHome />

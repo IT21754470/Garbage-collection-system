@@ -14,6 +14,14 @@ const specialpickupSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  date: {
+    type: String,
+    required: true,
+ },
+ location: {
+    type: String,
+    required: true,
+ },
   accepted: {
     type: Boolean,
     default: false

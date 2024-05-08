@@ -4,10 +4,10 @@ import Notification from '../models/notification.model.js';
 import mongoose from 'mongoose';
 
 export const specialcreatePickup = async (req, res) => {
-  const { garbagetype, estimatedsize, userId } = req.body;
+  const { garbagetype, estimatedsize,date,location, userId } = req.body;
 
   // Check if all required fields are provided
-  if (!garbagetype || !estimatedsize || !userId) {
+  if (!garbagetype || !estimatedsize || !date||!location||!userId) {
     return res.status(400).json({ error: 'Garbage type, estimated size, and user ID are required' });
   }
 
@@ -21,6 +21,8 @@ export const specialcreatePickup = async (req, res) => {
     const newPickup = new specialPickup({
       garbagetype,
       estimatedsize,
+      date,
+      location,
       userId,
     });
 
