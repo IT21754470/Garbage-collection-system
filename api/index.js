@@ -8,6 +8,8 @@ import employeeRouter from './routes/employee.routes.js'
 import feedRouter from './routes/feed.routes.js'
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import postRouter from './routes/post.routes.js'
+import respondRouter from './routes/respond.routes.js';
 // Notification-related routes
 dotenv.config();
 
@@ -31,7 +33,9 @@ app.use("/api/pickup", pickupRouter);
 app.use('/api/specialpickup', specialpickupRouter);
 app.use('/api/employee', employeeRouter);
 app.use("/api/feed",feedRouter)
-
+app.use('/api/respond', respondRouter);
+app.use('/api/post', postRouter);
+app.use('/uploads', express.static('api/uploads'));
 app.use((err,req,res,next)=>{
 
     const statusCode=err.statusCode|| 500;

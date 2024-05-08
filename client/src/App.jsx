@@ -28,7 +28,10 @@ import ADDFeed from './pages/feedback/Addfeedback';
 import Update from './pages/feedback/UpdateFeed';
 
 
-
+import FeedPage from "./pages/Employee/FeedPage";
+import AddFeed from "./pages/Employee/AddFeed";
+import FeedManage from "./pages/Admin/FeedManage";
+import EditFeed from "./pages/Employee/EditFeed";
 
 export default function App() {
   const { currentUser } = useSelector((state) => state.user);
@@ -55,7 +58,7 @@ export default function App() {
        <Route path="/feed" element={<Feed />} />
    
 
-        <Route path="/Addfeed" element={<ADDFeed />} />
+        <Route path="/Addfeedback" element={<ADDFeed />} />
       
       
         <Route path="/update/:feedbackId" element={<Update />} />
@@ -72,9 +75,18 @@ export default function App() {
            <Route path="/adminpickupform" element={<PickupForm />} />
            <Route path="/employeepage" element={<EmployeePage/>}/>
            <Route path="/feed" element={<Feed />} />
+           <Route path="/feeds" element={<FeedPage />} />
+            <Route path="/feedmanage" element={<FeedManage />} />
           </>
         ) : (
-          <Route path="/admin-dashboard" element={<Navigate to="/" />} />
+         
+          <>
+          <Route path="/feeds" element={<FeedPage />} />
+          <Route path="/addfeed" element={<AddFeed />} />
+          <Route path="/feedmanage" element={<FeedManage />} />
+          <Route path="/feed/edit/:id" element={<EditFeed />} />
+        </>
+          
         )}
 
      
