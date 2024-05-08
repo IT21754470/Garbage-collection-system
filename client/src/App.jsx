@@ -23,6 +23,13 @@ import AddEmployeeDashboard from './pages/Admin/addEmployeedashboard';
 import EmployeePage from './pages/admin/employeePage';
 import Contact from './pages/contact';
 import NotificationBell from './Components/NotificationBell';
+import Feed from './pages/feedback/Feedback';
+import ADDFeed from './pages/feedback/Addfeedback';
+import Update from './pages/feedback/UpdateFeed';
+
+
+
+
 export default function App() {
   const { currentUser } = useSelector((state) => state.user);
   const isAdmin = currentUser?.isAdmin;
@@ -44,7 +51,14 @@ export default function App() {
         <Route path="/specialpickup" element={<SpecialPickup />} />
         <Route path="/contact" element={<Contact/>}/>
   <Route path='/about' element={<About/>}/>
-       <Route path="/pickup" element={<Pickup />} />
+    
+       <Route path="/feed" element={<Feed />} />
+   
+
+        <Route path="/Addfeed" element={<ADDFeed />} />
+      
+      
+        <Route path="/update/:feedbackId" element={<Update />} />
         {isAdmin ? (
           <>
             
@@ -57,6 +71,7 @@ export default function App() {
              <Route path="/addemployeedashboard" element={<AddEmployeeDashboard/>}/>
            <Route path="/adminpickupform" element={<PickupForm />} />
            <Route path="/employeepage" element={<EmployeePage/>}/>
+           <Route path="/feed" element={<Feed />} />
           </>
         ) : (
           <Route path="/admin-dashboard" element={<Navigate to="/" />} />

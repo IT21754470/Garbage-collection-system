@@ -92,7 +92,7 @@ export default function Header() {
             </li>
           </Link>
   
-          <Link to="/feedback">
+          <Link to="/feed">
             <li className="hidden sm:inline text-slate-700 hover:underline bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
               Feedback
             </li>

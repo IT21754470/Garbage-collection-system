@@ -75,6 +75,8 @@ export const google=async(req,res,next)=>{
         username: req.body.name.split("").join("").toLowerCase() + Math.random().toString(36).slice(-4),
         email: req.body.email,
         password: hashedPassword,
+        address: req.body.address,
+        lane: req.body.lane,
         avatar: req.body.photo,
        
     });

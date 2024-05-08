@@ -195,15 +195,7 @@ const handleSignOut = async () => {
        onChange={handleChange}
        />
 
-<input
-          type='password'
-          placeholder='password'
-        
-          id='password'
-          className='border p-3 rounded-lg'
-          defaultValue={currentUser.password}
-          onChange={handleChange}
-        />
+
 <input
           type='text'
           placeholder='address'
