@@ -1,35 +1,37 @@
-import React from 'react'
-import img from '../assets/About.jpg'
+import React from 'react';
+import img from '../assets/About.jpg';
+
 const AboutUs = () => {
   return (
-    <div className=' bg-white menu-background'>
-      <div className='section-container  '>
-        <div className=' flex flex-col md:flex-row-reverse justify-between  items-center gap-6'>
+    <div className="bg-white">
+      <div className="section-container flex flex-col lg:flex-row"> {/* Two-column layout */}
+        <div className="flex-1 relative"> {/* Allows for absolute positioning */}
+          <img className="w-full h-[740px]" src={img} alt="About Us" /> {/* Full image width and height */}
+          
+          <div className="absolute inset-0 flex flex-col justify-center items-center bg-gray-500/60  text-center px-6"> {/* Centers the content */}
+            <h1 className="font-bold text-6xl text-gray-100">About Us</h1>
+            
+            <div className="w-20 h-1 bg-green-500 my-3"></div> {/* Divider */}
+            
+            <div className="w-full max-w-lg space-y-6 "> 
+              <p className="text-gray-100">
+                EcoPick is a garbage collection system that has been serving the Kaluthara community for over 30 years. We specialize in sustainable solutions for waste management and pride ourselves on providing environmentally friendly services.
+              </p>
+              
+              <p className="text-gray-100">
+                We are committed to providing our customers with the best possible experience. If you have any questions or concerns, please feel free to contact us at any time!
+              </p>
+              
+              <p className="text-gray-100">
+                We hope you enjoy your experience with EcoPick!
+              </p>
+            </div>
+          </div>
+        </div>
         
-       
-
-        <div className='md:w-3/5 space-y-7  bg-simpleLightYellow p-4 rounded-2xl mt-32'>
-            <h2 className='text-3xl font-semibold text-slate-700'>About Us</h2>
-            <p className='text-gray-800'>
-            EcoPick is a garbage collection system that has been serving the Kaluthara community for over 30 years. We specialize in , and we are proud to offer a wide variety of dishes from all over the country.
-            </p>
-            <p className='text-gray-800'>
-            We are committed to providing our customers with the best possible experience. Our goal is to make sure that every customer leaves satisfied and happy with their meal. If you have any questions or concerns, please feel free to contact us at any time!
-            </p>
-            <p className='text-gray-800'>
-            We hope you enjoy your visit to EcoPick
-            </p>
-        </div>
-
-     
-
-        <div className='md:w-2/5 h-screen mt-20'>
-        <img className='w-full h-[600px]'  src={img} alt="Contact Us" />
-        </div>
+      </div>
     </div>
-</div>
-</div>
-  )
-}
+  );
+};
 
-export default AboutUs
+export default AboutUs;

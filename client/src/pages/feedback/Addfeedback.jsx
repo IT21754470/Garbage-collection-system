@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import StarRating from "./StarRating";
-
+import img2 from '../../assets/feed.jpg';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
@@ -51,14 +51,23 @@ export default function SignUp() {
   };
 
   return (
-    <div className="min-h-screen mt-20">
-      <div className="flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5">
-        <div className="flex-1">
+    <div className="bg-white menu-background">
+     
+      <div className='section-container'>
+      <div className='grid grid-cols-2 divide-y'>
+       
+        <div >
+            <img className=' h-[720px] object-cover' src={img2} alt="Contact Us" />
+          </div>
+      
+        <div className=" bg-slate-200 p-50  h-[620px] flex flex-col items-center justify-center mb-6">
+          <h1 className='text-4xl text-center font-semibold text-slate-700 mb-5'>Feedback</h1>
+          <h1>Add Your Vluable Feedback is here</h1>
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
             <div>
-              <h3 className="font-semibold text-slate-400 ml-1">Name</h3>
+              <h3 className="font-semibold text-slate-700 ml-1">Name</h3>
               <input
-                className="bg-slate-100 p-3 rounded-lg w-[460px] h-11"
+                className="bg-slate-400 p-3 rounded-lg w-[460px] h-11"
                 type="text"
                 placeholder="Name"
                 id="name"
@@ -67,7 +76,7 @@ export default function SignUp() {
             </div>
 
             <div className="flex items-center">
-              <h3 className="font-semibold text-slate-400 ml-1">Rate</h3>
+              <h3 className="font-semibold text-slate-900 ml-1">Rate</h3>
               <StarRating
                 rating={formData.rate || 0}
                 onRatingChange={handleStarRatingChange}
@@ -75,9 +84,9 @@ export default function SignUp() {
             </div>
 
             <div>
-              <h3 className="font-semibold text-slate-400 ml-1">Description</h3>
+              <h3 className="font-semibold text-slate-700 ml-1">Description</h3>
               <textarea
-                className="bg-slate-100 p-3 rounded-lg w-[460px] h-32 resize-none"
+                className="bg-slate-400 p-3 rounded-lg w-[460px] h-32 resize-none"
                 placeholder="Description"
                 id="Description"
                 onChange={handleChange}
@@ -101,5 +110,7 @@ export default function SignUp() {
         </div>
       </div>
     </div>
+    </div>
+
   );
 }
