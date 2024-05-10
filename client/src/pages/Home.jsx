@@ -12,7 +12,7 @@ export default function Home() {
   console.log(currentUser?.isAdmin);
 
   return (
-    <div className="w-full py-[10rem] px-4 bg-white">
+    <div className="w-full py-[10rem] px-4 bg-green-100">
       <div className="max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8">
         <div className="w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300 bg-gray-300  ">
           <img
@@ -28,7 +28,7 @@ export default function Home() {
 
           <button className="bg-[#00df9a] text-black rounded-md font-medium w-[200px]  my-6 mx-auto px-6 py-3 ">
             {" "}
-            <Link to="/pickupTable">Join</Link>
+            <Link to="/pickupTable">View</Link>
           </button>
         </div>
         <div className="bg-gray-100 w-full shadow-2xl flex flex-col p-4 md:my-0 my-8 rounded-lg hover:scale-105 duration-300">
@@ -42,7 +42,7 @@ export default function Home() {
           </h2>
 
           <button className="bg-black text-[#00df9a] rounded-md font-medium w-[200px]  my-6 mx-auto px-6 py-3 ">
-            <Link to="/specialpickup">Join</Link>
+            <Link to="/specialpickup">View</Link>
           </button>
         </div>
 

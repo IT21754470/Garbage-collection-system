@@ -11,13 +11,17 @@ const AdminDashboard = () => {
    
 
     return (
-        <div className='bg-green-200'>
+       
+            <div className="bg-white">
+              <div className="section-container flex flex-col lg:flex-row"> {/* Two-column layout */}
+                <div className="flex-1 relative">
             <Navbar />
             <h1 className='text-4xl font-bold text-center absolute-top-15 h-16 '>Welcome to admin dashboard</h1>
             <img className='
        h-[340px] w-[2040px]  item-center'src={Single3} alt=""/>
          
-          
+          </div>
+          </div>
         </div>
     );
 };

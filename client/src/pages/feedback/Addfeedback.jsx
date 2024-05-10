@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import StarRating from "./StarRating";
-import img2 from '../../assets/feed.jpg';
+import img2 from '../../assets/f.jpg';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
@@ -60,14 +60,14 @@ export default function SignUp() {
             <img className=' h-[720px] object-cover' src={img2} alt="Contact Us" />
           </div>
       
-        <div className=" bg-slate-200 p-50  h-[620px] flex flex-col items-center justify-center mb-6">
+        <div className=" bg-slate-100 p-50  h-[730px] flex flex-col items-center justify-center mb-6">
           <h1 className='text-4xl text-center font-semibold text-slate-700 mb-5'>Feedback</h1>
           <h1>Add Your Vluable Feedback is here</h1>
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
             <div>
               <h3 className="font-semibold text-slate-700 ml-1">Name</h3>
               <input
-                className="bg-slate-400 p-3 rounded-lg w-[460px] h-11"
+                className="bg-slate-300 p-3 rounded-lg w-[460px] h-11"
                 type="text"
                 placeholder="Name"
                 id="name"
@@ -86,7 +86,7 @@ export default function SignUp() {
             <div>
               <h3 className="font-semibold text-slate-700 ml-1">Description</h3>
               <textarea
-                className="bg-slate-400 p-3 rounded-lg w-[460px] h-32 resize-none"
+                className="bg-slate-300 p-3 rounded-lg w-[460px] h-32 resize-none"
                 placeholder="Description"
                 id="Description"
                 onChange={handleChange}
@@ -95,7 +95,7 @@ export default function SignUp() {
             </div>
 
             <button
-              className="bg-blue-700 text-white p-3 rounded-lg w-[460px] h-11 hover:opacity-90"
+              className="bg-green-700 text-white p-3 rounded-lg w-[460px] h-11 hover:opacity-90"
               type="submit"
             >
               Submit

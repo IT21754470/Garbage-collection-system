@@ -8,8 +8,8 @@ export default function Table() {
   const [formData, setFormData] = useState({
     garbagetype: '',
     estimatedsize: '',
-    date:'',
-    location:'',
+    date: '',
+    location: '',
     userId: currentUser?._id || '',
   });
 
@@ -17,13 +17,12 @@ export default function Table() {
     const { id, value } = e.target;
     setFormData({
       ...formData,
-      [id]: value
+      [id]: value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
     try {
       const response = await fetch('/api/specialpickup/createspecial', {
         method: 'POST',
@@ -32,98 +31,96 @@ export default function Table() {
         },
         body: JSON.stringify(formData),
       });
-      
+
       if (!response.ok) {
         throw new Error('Failed to create pickup');
       }
-  
+
       const data = await response.json();
-      console.log(data); 
+      console.log(data);
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div className="flex items-center justify-center mt-10">
-      <div>
-        <div><FaArrowLeft /></div>
-        <div className="h-[500px] w-[1500px] bg-gradient-to-r from-green-400 to-green-400 via-white">
-          <div className="flex items-center justify-center mt-4"></div>
-          <h1 className="text-2xl font-serif ml-8 mt-4">Select the garbage type</h1>
-          <div className="flex justify-center items-center">
-            <div className="mt-10 h-[220px] w-[800px] bg-slate-50">
-              <div className="flex gap-5 justify-center items-center">
-                <div>
-                  <img className="w-10 h-10 mt-4 bg-white" src={Bin} alt="" />
-                  <button className={`bg-green-200 w-20 h-8 mt-3 rounded-xl ml-2 ${formData.garbagetype === 'Type A' ? 'bg-green-500' :'hover:bg-green-300'}`} onClick={() => handleChange({ target: { id: 'garbagetype', value: 'Type A' } })}>Type A</button>
-                </div>
-                <div>
-                  <img className="w-10 h-10 mt-4 bg-white" src={Bin} alt="" />
-                  <button className={`bg-green-200 w-20 h-8 mt-3 rounded-xl ml-2 ${formData.garbagetype === 'Type B' ? 'bg-green-500' :'hover:bg-green-300'}`} onClick={() => handleChange({ target: { id: 'garbagetype', value: 'Type B' } })}>Type B</button>
-                </div>
-                <div>
-                  <img className="w-10 h-10 mt-4 bg-white" src={Bin} alt="" />
-                  <button className={`bg-green-200 w-20 h-8 mt-3 rounded-xl ml-2 ${formData.garbagetype === 'Type C' ? 'bg-green-500' :'hover:bg-green-300'}`} onClick={() => handleChange({ target: { id: 'garbagetype', value: 'Type C' } })}>Type C</button>
-                </div>
-                <div>
-                  <img className="w-10 h-10 mt-4 bg-white" src={Bin} alt="" />
-                  <button className={`bg-green-200 w-20 h-8 mt-3 rounded-xl ml-2 ${formData.garbagetype === 'Type D' ? 'bg-green-500' :'hover:bg-green-300'}`} onClick={() => handleChange({ target: { id: 'garbagetype', value: 'Type D' } })}>Type D</button>
-                </div>
-              </div>
-              <h1 className="text-2xl font-serif ml-8 mt-4">Estimated size</h1>
-              <div className="flex gap-5 justify-center items-center">
-                <div><button className={`bg-green-200 w-20 h-8 mt-3 rounded-xl ml-2 ${formData.estimatedsize === 'XL' ? 'bg-green-500' :'hover:bg-green-300'}`} onClick={() => handleChange({ target: { id: 'estimatedsize', value: 'XL' } })}>XL</button></div>
-                <div><button className={`bg-green-200 w-20 h-8 mt-3 rounded-xl ml-2 ${formData.estimatedsize === 'Large' ? 'bg-green-500' :'hover:bg-green-300'}`} onClick={() => handleChange({ target: { id: 'estimatedsize', value: 'Large' } })}>Large</button></div>
-                <div><button className={`bg-green-200 w-20 h-8 mt-3 rounded-xl ml-2 ${formData.estimatedsize === 'Medium' ? 'bg-green-500' :'hover:bg-green-300'}`} onClick={() => handleChange({ target: { id: 'estimatedsize', value: 'Medium' } })}>Medium</button></div>
-                <div><button className={`bg-green-200 w-20 h-8 mt-3 rounded-xl ml-2 ${formData.estimatedsize === 'Small' ? 'bg-green-500' :'hover:bg-green-300'}`} onClick={() => handleChange({ target: { id: 'estimatedsize', value: 'Small' } })}>Small</button></div>
-              </div>
+    <div className="flex items-center justify-center mt-10 bg-green-100 min-h-screen">
+      <div className="w-full md:w-[1200px] lg:w-[800px] bg-white rounded-xl shadow-lg p-8">
+        <div className="flex justify-between mb-8">
+          <FaArrowLeft className="text-gray-600 cursor-pointer hover:text-gray-900" />
+        </div>
+        
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-800 mb-6">Garbage Collection Request</h1>
+        </div>
 
-              <div className="mb-4 col-span-1">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="date"
+        {/* Garbage Type Selection */}
+        <h2 className="text-lg font-medium text-gray-700">Select the garbage type</h2>
+        <div className="flex gap-6 justify-center my-4">
+          {['Type A', 'Type B', 'Type C', 'Type D'].map((type) => (
+            <div key={type} className="flex flex-col items-center">
+              <img className="w-10 h-10 bg-white" src={Bin} alt={type} />
+              <button
+                className={`bg-green-200 w-24 h-10 rounded-lg ${formData.garbagetype === type ? 'bg-green-500' : 'hover:bg-green-300'}`}
+                onClick={() => handleChange({ target: { id: 'garbagetype', value: type } })}
+              >
+                {type}
+              </button>
+            </div>
+          ))}
+        </div>
+
+        <h2 className="text-lg font-medium text-gray-700 mt-6">Estimated size</h2>
+        <div className="flex gap-6 justify-center my-4">
+          {['XL', 'Large', 'Medium', 'Small'].map((size) => (
+            <button
+              key={size}
+              className={`bg-green-200 w-24 h-10 rounded-lg ${formData.estimatedsize === size ? 'bg-green-500' : 'hover:bg-green-300'}`}
+              onClick={() => handleChange({ target: { id: 'estimatedsize', value: size } })}
             >
-              Final Date
-            </label>
+              {size}
+            </button>
+          ))}
+        </div>
+
+      
+        <div className="mt-6 space-y-6">
+          <div>
+            <label htmlFor="date" className="block text-gray-700">Final Date</label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="date"
+              className="w-full bg-white rounded-lg border p-3 focus:outline-none focus:ring-2 focus:ring-green-500"
               type="date"
-              name="date"
+              id="date"
               value={formData.date}
               onChange={handleChange}
               required
-            />  
+            />
           </div>
-          <div className="mb-4 col-span-1">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="location"
-            >
-              Location
-            </label>
+
+          <div>
+            <label htmlFor="location" className="block text-gray-700">Location</label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="w-full bg-white rounded-lg border p-3 focus:outline-none focus:ring-2 focus:ring-green-500"
               type="text"
-              name="location"
               id="location"
+              placeholder="Enter location"
               value={formData.location}
               onChange={handleChange}
               required
-              placeholder="Enter location"
             />
           </div>
-              <div></div>
-            </div>
-          </div>
-        
         </div>
-        <button onClick={handleSubmit} className="bg-slate-700 text-white w-32 h-15 mt-8 rounded-xl ml-[800px] uppercase hover:opacity-95 disabled:opacity-80">Submit Approval</button>
-        <div className="flex gap-4 mt-4 text-2xl">
-          <FaUser />
-          <FaHome />
+
+        <div className="text-center mt-8">
+          <button
+            onClick={handleSubmit}
+            className="bg-green-700 text-white w-40 h-12 rounded-xl uppercase hover:bg-green-600 transition"
+          >
+            Submit Approval
+          </button>
         </div>
+
+       
       </div>
     </div>
   );

@@ -13,14 +13,15 @@ import Users from './pages/Admin/users';
 import {useSelector} from 'react-redux';
 import Footer from './Components/footer';
 import Pickup from './pages/Admin/pickup';
-import PickupTable from './pages/pickupTable';
+import PickupTable from './pages/PickupTable';
 import SpecialPickup from './pages/specialpickup';
 import Specialpickuptable from './pages/Admin/specialpickuptable';
 import AdminlPickup from './pages/Admin/adminpickuptable';
 import PickupForm from './pages/Admin/adminPickupPage';
 import AddEmployee from './pages/Admin/addEmployee';
 import AddEmployeeDashboard from './pages/Admin/addEmployeedashboard';
-import EmployeePage from './pages/admin/employeePage';
+
+
 import Contact from './pages/contact';
 import NotificationBell from './Components/NotificationBell';
 import Feed from './pages/feedback/Feedback';
@@ -73,7 +74,7 @@ export default function App() {
              <Route path="/addemployee" element={<AddEmployee/>}/>
              <Route path="/addemployeedashboard" element={<AddEmployeeDashboard/>}/>
            <Route path="/adminpickupform" element={<PickupForm />} />
-           <Route path="/employeepage" element={<EmployeePage/>}/>
+          
            <Route path="/feed" element={<Feed />} />
            <Route path="/feeds" element={<FeedPage />} />
             <Route path="/feedmanage" element={<FeedManage />} />

@@ -15,7 +15,7 @@ import { FaStar } from "react-icons/fa"; // Importing FontAwesome stars
         <FaStar
           key={star}
           size={30}
-          color={star <= rating ? "#FFD700" : "#DDD"} // Yellow if rated, grey if not
+          color={star <= rating ? "#FFD701" : "#808080"} // Yellow if rated, grey if not
           onClick={() => handleClick(star)}
           className="cursor-pointer"
         />
