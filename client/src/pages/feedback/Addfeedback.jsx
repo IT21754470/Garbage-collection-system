@@ -60,7 +60,7 @@ export default function SignUp() {
             <img className=' h-[720px] object-cover' src={img2} alt="Contact Us" />
           </div>
       
-        <div className=" bg-slate-100 p-50  h-[730px] flex flex-col items-center justify-center mb-6">
+        <div className=" bg-gradient-to-r from-[#bfefae] via-[#d8e4d3] to-[#dbecd7] p-50  h-[730px] flex flex-col items-center justify-center mb-6">
           <h1 className='text-4xl text-center font-semibold text-slate-700 mb-5'>Feedback</h1>
           <h1>Add Your Vluable Feedback is here</h1>
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>

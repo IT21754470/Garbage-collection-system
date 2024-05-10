@@ -54,7 +54,7 @@ const NotificationBell = () => {
             notifications.map((notification, index) => (
               <div
                 key={index}
-                className="flex items-center p-8 border-b border-gray-700 bg-gray-300 hover:bg-green-500 transition duration-200 ease-in-out"
+                className="flex items-center p-8 border-b border-gray-700 bg-gray-300 hover:bg-green-200 transition duration-200 ease-in-out"
               >
              
                 <img

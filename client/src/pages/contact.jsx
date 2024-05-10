@@ -9,7 +9,7 @@ const ContactUs = () => {
           <img className="w-full h-[740px]" src={img} alt="Contact Us" />
         </div>
 
-        <div className="flex-1 bg-green-100 p-20 flex flex-col items-center justify-center"> 
+        <div className="flex-1 bg-gradient-to-r from-[#bfefae] via-[#d8e4d3] to-[#dbecd7] p-20 flex flex-col items-center justify-center"> 
           <h2 className="text-5xl font-bold text-slate-700 items-center justify-center">Contact Us</h2>
           <div className="w-20 h-1 bg-green-500 my-3"></div>
           <p className="text-gray-600 mb-6"> {/* Increased bottom margin here */}

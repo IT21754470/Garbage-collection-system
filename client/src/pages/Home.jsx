@@ -12,7 +12,7 @@ export default function Home() {
   console.log(currentUser?.isAdmin);
 
   return (
-    <div className="w-full py-[10rem] px-4 bg-green-100">
+    <div className="w-full py-[10rem] px-4 bg-gradient-to-r from-[#bfefae] via-[#d8e4d3] to-[#dbecd7]">
       <div className="max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8">
         <div className="w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300 bg-gray-300  ">
           <img
