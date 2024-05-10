@@ -47,7 +47,7 @@ export default function AddFeed() {
   };
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 bg-gradient-to-r from-[#bfefae] via-[#d8e4d3] to-[#dbecd7]">
       <div className="w-3/5 mx-auto">
         <h1 className="text-3xl font-bold mb-8">Add Feed</h1>
         <form onSubmit={handleSubmit} className="grid grid-cols-4 gap-4">

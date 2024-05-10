@@ -29,3 +29,15 @@ export const getLatestNotification = async (req, res) => {
     res.status(500).json({ error: 'Error fetching the latest notification' });
   }
 };
+
+export const deleteNotification = async (req, res) => {
+  const { notificationId } = req.params;
+
+  try {
+    await Notification.findByIdAndDelete(notificationId);
+    res.status(200).json({ message: 'Notification deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting notification:', error);
+    res.status(500).json({ error: 'Error deleting notification' });
+  }
+}

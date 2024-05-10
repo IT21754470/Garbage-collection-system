@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaBell } from 'react-icons/fa';
+import { FaBell, FaTrash } from 'react-icons/fa'; // Importing FaTrash for delete icon
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import img from '../assets/31.png'; // The image to use as the icon
@@ -33,6 +33,17 @@ const NotificationBell = () => {
 
   const unreadCount = notifications.filter((n) => !n.read).length;
 
+  const handleDelete = async (notificationId) => {
+    try {
+      await axios.delete(`/api/specialpickup/notifications/${notificationId}`); 
+      setNotifications((prev) =>
+        prev.filter((notification) => notification._id !== notificationId) // Remove from state
+      );
+    } catch (error) {
+      console.error('Error deleting notification:', error);
+    }
+  };
+
   return (
     <div className="relative">
       <FaBell
@@ -47,22 +58,27 @@ const NotificationBell = () => {
           className="absolute right-0 mt-2 bg-white border border-gray-300 rounded-lg shadow-lg w-56 z-10 transition-opacity duration-300 ease-in-out"
           style={{ opacity: isDropdownOpen ? 1 : 0 }}
         >
-          <h1 className='font-bold '>Notifications</h1>
+          <h1 className='font-bold text-center'>Notifications</h1>
+
           {notifications.length === 0 ? (
             <div className="p-4 text-center text-gray-500">No new notifications</div>
           ) : (
-            notifications.map((notification, index) => (
+            notifications.map((notification) => (
               <div
-                key={index}
-                className="flex items-center p-8 border-b border-gray-700 bg-gray-300 hover:bg-green-200 transition duration-200 ease-in-out"
+                key={notification._id}
+                className="flex items-center p-4 border-b border-gray-300 bg-white hover:bg-gray-200 transition duration-200 ease-in-out relative"
               >
-             
                 <img
-                  src={img} 
+                  src={img}
                   alt="Notification icon"
-                  className="w-7 h-8 rounded-full mr-8 absolute top-12 left-0" 
+                  className="w-8 h-8 rounded-full mr-4"
                 />
-                <span>{notification.message}</span> 
+                <span>{notification.message}</span>
+
+                <FaTrash
+                  className="text-green-500 cursor-pointer absolute right-2"
+                  onClick={() => handleDelete(notification._id)} // Delete handler
+                />
               </div>
             ))
           )}
