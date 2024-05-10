@@ -165,7 +165,7 @@ const Table = () => {
             onClick={handleSubmit}
             className="bg-green-700 text-white w-40 h-12 rounded-xl uppercase hover:bg-green-600 transition"
           >
-            Submit Approval
+            Submit for approval
           </button>
         </div>
       </div>

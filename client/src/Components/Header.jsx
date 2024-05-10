@@ -29,7 +29,7 @@ export default function Header() {
         return;
       }
       dispatch(deleteUserSuccess(data));
-      window.location.href = '/signin';
+      window.location.href = '/sign-in';
     } catch (error) {
       const data = error.response.data;
       dispatch(deleteUserFailure(data.message));
@@ -97,7 +97,7 @@ export default function Header() {
           {currentUser && isAdmin && (
             
             <Link to="/admin-dashboard">
-              <li className="hidden sm:inline text-slate-700 hover:underline bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
+              <li className="text-gray-900">
                 Admin Dashboard
               </li>
              
@@ -124,10 +124,14 @@ export default function Header() {
                   </Link>
                   <button
                     onClick={handleSignOut}
+                 
                     className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 w-full text-left hover:text-blue-600"
                   >
+                   
                     Logout
+                  
                   </button>
+                 
                 </div>
               )}
             </div>

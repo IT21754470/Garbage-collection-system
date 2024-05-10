@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import OAuth from '../Components/OAuth';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Importing icons
 
-export default function SignOut() {
+export default function SignUp() { // Corrected the function name
   const [formData, setFormData] = useState({});
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -18,11 +20,11 @@ export default function SignOut() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
     if (formData.password !== formData.confirmpassword) {
       setError('Passwords do not match');
       return;
     }
+
     const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
 
     if (!passwordPattern.test(formData.password)) {
@@ -34,7 +36,6 @@ export default function SignOut() {
 
     try {
       setLoading(true);
-
       const res = await fetch('/api/auth/signup', {
         method: 'POST',
         headers: {
@@ -44,7 +45,6 @@ export default function SignOut() {
       });
 
       const data = await res.json();
-      console.log(data);
       if (data.success === false) {
         setError(data.message);
         setLoading(false);
@@ -53,7 +53,7 @@ export default function SignOut() {
 
       setLoading(false);
       setError(null);
-      navigate('/sign-in');
+      navigate('/sign-in'); // Redirect after successful sign-up
     } catch (error) {
       setLoading(false);
       setError(error.message);
@@ -63,7 +63,7 @@ export default function SignOut() {
   return (
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl text-center font-semibold my-7'>Sign up</h1>
-
+      
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
           type='text'
@@ -72,6 +72,7 @@ export default function SignOut() {
           id='username'
           onChange={handleChange}
         />
+
         <input
           type='email'
           placeholder='Email'
@@ -79,20 +80,41 @@ export default function SignOut() {
           id='email'
           onChange={handleChange}
         />
-        <input
-          type='password'
-          placeholder='Password'
-          className='border p-3 rounded-lg'
-          id='password'
-          onChange={handleChange}
-        />
-        <input
-          type='password'
-          placeholder='Confirm Password'
-          className='border p-3 rounded-lg'
-          id='confirmpassword'
-          onChange={handleChange}
-        />
+
+        <div className='relative'>
+          <input
+            type={showPassword ? 'text' : 'password'}
+            placeholder='Password'
+            className='border p-3 rounded-lg w-full'
+            id='password'
+            onChange={handleChange}
+          />
+          <button
+            type='button'
+            className='absolute right-3 top-3'
+            onClick={() => setShowPassword(!showPassword)} // Toggle visibility
+          >
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </button>
+        </div>
+
+        <div className='relative'>
+          <input
+            type={showPassword ? 'text' : 'password'}
+            placeholder='Confirm Password'
+            className='border p-3 rounded-lg w-full'
+            id='confirmpassword'
+            onChange={handleChange}
+          />
+          <button
+            type='button'
+            className='absolute right-3 top-3'
+            onClick={() => setShowPassword(!showPassword)} // Toggle visibility
+          >
+            {showPassword ? <FaEyeSlash /> : <FaEye />} // Toggle between eye and eye-slash
+          </button>
+        </div>
+
         <input
           type='text'
           placeholder='Address'
@@ -100,6 +122,7 @@ export default function SignOut() {
           id='address'
           onChange={handleChange}
         />
+
         <select id='lane' className='border p-3 rounded-lg' onChange={handleChange}>
           <option value=''>Select Lane</option>
           <option value='Lane A'>Lane A</option>

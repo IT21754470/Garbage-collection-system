@@ -151,7 +151,7 @@ export default function AddFeed() {
             </label>
             <img
               src={prviewImage}
-              alt="Event"
+           
               className="w-64 h-44 object-cover rounded-md mb-2"
             />
             <input

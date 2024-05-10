@@ -94,7 +94,7 @@ const EmployeeForm = ({ employee }) => {
             <label htmlFor="email" className="text-lg mb-2">Email</label>
             <input type="email" id="email" value={formData.email} onChange={handleChange} className="p-2 border border-gray-300 rounded-md" />
           </div>
-          <button type="submit" className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">Update Schedule</button>
+          <button type="submit" className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">Update Employee</button>
         </form>
       </div>
     </div>

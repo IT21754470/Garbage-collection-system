@@ -90,7 +90,7 @@ export default function FeedPage() {
   };
 
   return (
-    <div className=" bg-slate-400 menu-background">
+    <div className="bg-gradient-to-r from-[#bfefae] via-[#d8e4d3] to-[#dbecd7] menu-background">
       <div className="section-container p-4">
         <div className="flex justify-between items-center w-full mx-auto bg-white p-4 shadow-md rounded-lg mb-4">
           <div className="section-title">Community Feed</div>
@@ -107,14 +107,14 @@ export default function FeedPage() {
             ) : (
               <a
                 href="/feedmanage"
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded block mr-4"
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded block mr-4"
               >
                 My Posts
               </a>
             )}
             <a
               href="/addfeed"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded block"
+              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded block"
             >
               Add New Post
             </a>

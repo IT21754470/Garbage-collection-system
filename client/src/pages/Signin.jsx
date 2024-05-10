@@ -3,11 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice';
 import OAuth from '../Components/OAuth';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Using FontAwesome icons
+
 const SignIn = () => {
   const [formData, setFormData] = useState({});
+  const [showPassword, setShowPassword] = useState(false); // Track password visibility
   const { loading, error } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const Navigate = useNavigate();
+  const navigate = useNavigate(); // Fixing case to be lowercase
 
   const handleChange = (e) => {
     setFormData({
@@ -33,11 +36,11 @@ const SignIn = () => {
         return;
       }
       dispatch(signInSuccess(data));
-    
+
       if (data.isAdmin) {
-        Navigate('/admin-dashboard'); 
+        navigate('/admin-dashboard'); 
       } else {
-        Navigate('/');
+        navigate('/'); 
       }
     } catch (error) {
       dispatch(signInFailure(error.message));
@@ -55,14 +58,23 @@ const SignIn = () => {
           id="email"
           onChange={handleChange}
         />
-        <input
-          type="password"
-          placeholder="Password"
-          className="border p-3 rounded-lg"
-          id="password"
-          onChange={handleChange}
-        />
-
+        
+        <div className="relative"> 
+          <input
+            type={showPassword ? 'text' : 'password'} // Toggle visibility
+            placeholder="Password"
+            className="border p-3 rounded-lg w-full" // Set full width for proper alignment
+            id="password"
+            onChange={handleChange}
+          />
+          <button
+            type="button" 
+            className="absolute right-3 top-3" // Positioning of the toggle icon
+            onClick={() => setShowPassword(!showPassword)} // Toggle the visibility
+          >
+            {showPassword ? <FaEyeSlash /> : <FaEye />} 
+          </button>
+        </div>
 
         <button
           disabled={loading}
@@ -70,17 +82,18 @@ const SignIn = () => {
         >
           {loading ? 'Loading...' : 'Sign In'}
         </button>
-        <OAuth/>
+
+        <OAuth />
       </form>
+
       <div className="flex gap-2 mt-5">
         <p>Don't have an account?</p>
         <Link to="/sign-up">
           <span className="text-blue-700">Sign up</span>
         </Link>
-        {error && <p className="text-red-500 mt-5">{error.toString()}</p>}
-       
       </div>
       
+      {error && <p className="text-red-500 mt-5">{error.toString()}</p>}
     </div>
   );
 };
