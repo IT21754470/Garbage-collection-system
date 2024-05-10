@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@react-google-maps/api": "^2.19.3",
     "@reduxjs/toolkit": "^2.1.0",
     "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",

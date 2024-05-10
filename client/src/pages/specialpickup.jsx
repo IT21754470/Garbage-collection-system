@@ -1,9 +1,22 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { FaArrowLeft, FaUser, FaHome } from 'react-icons/fa';
+import { FaArrowLeft } from 'react-icons/fa';
 import Bin from '../assets/bin.png';
+import { LoadScript, GoogleMap, Marker } from '@react-google-maps/api';
 
-export default function Table() {
+const apiKey = "AIzaSyCjwdHUv1XyAeMPE7c-8aaeoitNAluWa3g"; // Ensure your key has billing enabled and correct restrictions
+
+const mapStyles = {
+  width: '100%',
+  height: '200px',
+};
+
+const defaultCenter = {
+  lat: 37.7749, // San Francisco
+  lng: -122.4194,
+};
+
+const Table = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const [formData, setFormData] = useState({
     garbagetype: '',
@@ -12,6 +25,9 @@ export default function Table() {
     location: '',
     userId: currentUser?._id || '',
   });
+  
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [markerPosition, setMarkerPosition] = useState(defaultCenter); // Default marker position
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -21,8 +37,25 @@ export default function Table() {
     });
   };
 
+  const handleMapClick = (e) => {
+    const latLng = {
+      lat: e.latLng.lat(),
+      lng: e.latLng.lng(),
+    };
+    
+    setMarkerPosition(latLng); // Update marker position
+    
+    // Optional: Update formData with human-readable address (additional work required for geocoding)
+    setFormData({
+      ...formData,
+      location: `Lat: ${latLng.lat}, Lng: ${latLng.lng}`, // You could add geocoding here to get a human-readable address
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitted(false); // Resetting submission state on submit
+    
     try {
       const response = await fetch('/api/specialpickup/createspecial', {
         method: 'POST',
@@ -36,8 +69,7 @@ export default function Table() {
         throw new Error('Failed to create pickup');
       }
 
-      const data = await response.json();
-      console.log(data);
+      setIsSubmitted(true); // Set to true when successful
     } catch (error) {
       console.error(error);
     }
@@ -54,10 +86,15 @@ export default function Table() {
           <h1 className="text-2xl font-bold text-gray-800 mb-6">Garbage Collection Request</h1>
         </div>
 
-  
-        <h2 className="text-lg font-medium text-gray-700">Select the garbage type</h2>
+        {isSubmitted && (
+          <div className="text-center text-green-700 font-bold mb-6">
+            Special pickup successfully created!
+          </div>
+        )}
+
+        <h2 className="text-lg font-medium text-gray-700 mt-6">Select the garbage type</h2>
         <div className="flex gap-6 justify-center my-4">
-          {['Type A', 'Type B', 'Type C', 'Type D'].map((type) => (
+          {['Organic', 'Hazardous', 'Solid', 'Liquid'].map((type) => (
             <div key={type} className="flex flex-col items-center">
               <img className="w-10 h-10 bg-white" src={Bin} alt={type} />
               <button
@@ -71,7 +108,7 @@ export default function Table() {
         </div>
 
         <h2 className="text-lg font-medium text-gray-700 mt-6">Estimated size</h2>
-        <div className="flex gap-6 justify-center my-4">
+        <div class="flex gap-6 justify-center my-4">
           {['XL', 'Large', 'Medium', 'Small'].map((size) => (
             <button
               key={size}
@@ -83,7 +120,6 @@ export default function Table() {
           ))}
         </div>
 
-      
         <div className="mt-6 space-y-6">
           <div>
             <label htmlFor="date" className="block text-gray-700">Final Date</label>
@@ -109,6 +145,19 @@ export default function Table() {
               required
             />
           </div>
+
+          {/* Google Map Integration */}
+          <LoadScript googleMapsApiKey={apiKey}>
+            <GoogleMap
+              mapContainerStyle={mapStyles}
+              center={markerPosition}
+              zoom={10} // Adjust zoom level as needed
+              onClick={handleMapClick} // Add the click event handler
+            >
+              {/* Display a marker at the selected position */}
+              <Marker position={markerPosition} />
+            </GoogleMap>
+          </LoadScript>
         </div>
 
         <div className="text-center mt-8">
@@ -119,9 +168,9 @@ export default function Table() {
             Submit Approval
           </button>
         </div>
-
-       
       </div>
     </div>
   );
-}
+};
+
+export default Table;
