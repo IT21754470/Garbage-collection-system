@@ -54,7 +54,7 @@ export default function Table() {
           <h1 className="text-2xl font-bold text-gray-800 mb-6">Garbage Collection Request</h1>
         </div>
 
-        {/* Garbage Type Selection */}
+  
         <h2 className="text-lg font-medium text-gray-700">Select the garbage type</h2>
         <div className="flex gap-6 justify-center my-4">
           {['Type A', 'Type B', 'Type C', 'Type D'].map((type) => (

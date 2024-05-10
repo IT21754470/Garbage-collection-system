@@ -67,15 +67,15 @@ export default function Profile() {
       }
     );
   };
-  //console log current user
+
   console.log(currentUser);
 
-  //handle change
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  //handle submit
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -74,7 +74,7 @@ export const acceptSpecialPickup = async (req, res) => {
 
     const notification = new Notification({
       userId: pickup.userId,
-      message: `Your special pickup request for ${pickup.garbagetype} (Size: ${pickup.estimatedsize}) has been accepted.`,
+      message: `Hi!Your special pickup request for ${pickup.garbagetype} (Size: ${pickup.estimatedsize}) has been accepted We visit us on you ${pickup.date.toString()}.`,
     });
 
     await notification.save();

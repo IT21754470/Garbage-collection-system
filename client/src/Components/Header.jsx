@@ -7,6 +7,7 @@ import { deleteUserFailure, deleteUserSuccess, signOutUserStart } from '../redux
 import { useDispatch } from 'react-redux';
 import { FaBell } from 'react-icons/fa';
 import NotificationBell from './NotificationBell';
+import img2  from '../assets/30.png'
 
 
 export default function Header() {
@@ -56,12 +57,7 @@ export default function Header() {
       <div className="flex justify-between items-center max-w-6xl mx-auto p-3.5 absolute-top-3">
     
         
-        <Link to="/">
-          <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
-            <span className="text-green-500 text-4xl">Eco</span>
-            <span className="text-green-700 text-4xl">Pick</span>
-          </h1>
-        </Link>
+      <img className="h-16 w-auto" src={img2} alt="Contact Us" />
   
         <form className="bg-slate-100 p-3 rounded-lg flex items-center">
           <input
@@ -101,7 +97,7 @@ export default function Header() {
           {currentUser && isAdmin && (
             
             <Link to="/admin-dashboard">
-              <li className="text-slate-700 hover:underline">
+              <li className="hidden sm:inline text-slate-700 hover:underline bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
                 Admin Dashboard
               </li>
              
