@@ -93,7 +93,7 @@ export default function FeedPage() {
     <div className="bg-gradient-to-r from-[#bfefae] via-[#d8e4d3] to-[#dbecd7] menu-background">
       <div className="section-container p-4">
         <div className="flex justify-between items-center w-full mx-auto bg-white p-4 shadow-md rounded-lg mb-4">
-          <div className="section-title">Community Feed</div>
+          <div className="section-title text font-bold text-3xl">Welcome to EcoPick Community!</div>
           <div className="flex">
             {currentUser.isAdmin == true ? (
               <>

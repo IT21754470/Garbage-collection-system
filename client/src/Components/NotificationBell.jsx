@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaBell, FaTrash } from 'react-icons/fa'; // Importing FaTrash for delete icon
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import img from '../assets/31.png'; // The image to use as the icon
+
 
 const NotificationBell = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -68,11 +68,7 @@ const NotificationBell = () => {
                 key={notification._id}
                 className="flex items-center p-4 border-b border-gray-300 bg-white hover:bg-gray-200 transition duration-200 ease-in-out relative"
               >
-                <img
-                  src={img}
-                  alt="Notification icon"
-                  className="w-8 h-8 rounded-full mr-4"
-                />
+              
                 <span>{notification.message}</span>
 
                 <FaTrash
