@@ -42,5 +42,10 @@ Additional Libraries and Tools
 Mongoose: For MongoDB object modeling.
 JWT (JSON Web Tokens): For authentication.
 Nodemailer: For sending notification emails.
-Socket.io: For real-time communication (used in notifications).
+
+![Screenshot (1613)](https://github.com/IT21754470/Garbage-collection-system/assets/110586268/d1fb8cd6-c270-4802-826c-7d94ca4da204)
+![Screenshot (1616)](https://github.com/IT21754470/Garbage-collection-system/assets/110586268/41c204ed-7b3f-4552-9f6c-1e22aed7cfb8)
+![Screenshot (1618)](https://github.com/IT21754470/Garbage-collection-system/assets/110586268/16d28d67-3f4b-4e39-b4dc-d56a64a7b087)
+![Screenshot (1620)](https://github.com/IT21754470/Garbage-collection-system/assets/110586268/0224954e-1840-4843-b8dd-126fe4461874)
+![Screenshot (1621)](https://github.com/IT21754470/Garbage-collection-system/assets/110586268/2efbbbf9-c216-4bf7-84c9-1559cd69faf1)
 
