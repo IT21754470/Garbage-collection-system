@@ -48,4 +48,6 @@ Nodemailer: For sending notification emails.
 ![Screenshot (1618)](https://github.com/IT21754470/Garbage-collection-system/assets/110586268/16d28d67-3f4b-4e39-b4dc-d56a64a7b087)
 ![Screenshot (1620)](https://github.com/IT21754470/Garbage-collection-system/assets/110586268/0224954e-1840-4843-b8dd-126fe4461874)
 ![Screenshot (1621)](https://github.com/IT21754470/Garbage-collection-system/assets/110586268/2efbbbf9-c216-4bf7-84c9-1559cd69faf1)
+![Screenshot (1621)](https://github.com/IT21754470/Garbage-collection-system/assets/110586268/2bc9f245-c91d-4910-b8c7-5cdf5fcf5309)
+![Screenshot (1622)](https://github.com/IT21754470/Garbage-collection-system/assets/110586268/bc4e59a0-8382-447e-8524-b0c8979df8af)
 
